@@ -98,6 +98,7 @@ class ScreenUtil {
     bool? splitScreenMode,
     bool? minTextAdapt,
     FontSizeResolver? fontSizeResolver,
+    Orientation? orientation,
   }) {
     try {
       if (data != null)
@@ -117,7 +118,7 @@ class ScreenUtil {
     final MediaQueryData? deviceData = data.nonEmptySizeOrNull();
     final Size deviceSize = deviceData?.size ?? designSize;
 
-    final orientation = deviceData?.orientation ??
+    orientation ??= deviceData?.orientation ??
         (deviceSize.width > deviceSize.height
             ? Orientation.landscape
             : Orientation.portrait);
